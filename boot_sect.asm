@@ -1,12 +1,20 @@
 ;
 ; A simple boot sector program that loops forever.
 ;
-loop:                   ; Define a label "loop", that will allow
-                        ; us to jump back to it, forever.
+mov ah, 0x0e
 
-    jmp loop            ; Use a simple CPU instruction that jumps to a new memory
-                        ; address to continue execution. In our case, jump to the
-                        ; address of the current instruction. 
+mov al, 'H'
+int 0x10
+mov al, 'e'
+int 0x10
+mov al, 'l'
+int 0x10
+mov al, 'l'
+int 0x10
+mov al, 'o'
+int 0x10
+
+jmp $
 
 times 510-($-$$) db 0   ; When compiled, our program must fit into 512 bytes, with
                         ; the last two bytes being the magic number, so here, tell
