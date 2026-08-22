@@ -3,15 +3,27 @@
 ;
 mov ah, 0x0e
 
-mov al, 'H'
+mov al, ' '
 int 0x10
-mov al, 'e'
+mov al, '['
+int 0x10
+mov al, 'N'
+int 0x10
+mov al, 'a'
+int 0x10
+mov al, 'u'
+int 0x10
+mov al, 't'
+int 0x10
+mov al, 'y'
 int 0x10
 mov al, 'l'
 int 0x10
-mov al, 'l'
+mov al, 'O'
 int 0x10
-mov al, 'o'
+mov al, 'S'
+int 0x10
+mov al, ']'
 int 0x10
 
 jmp $
