@@ -15,13 +15,13 @@ mov al, 'u'
 int 0x10
 mov al, 't'
 int 0x10
-mov al, 'y'
+mov al, 'i'
 int 0x10
 mov al, 'l'
 int 0x10
-mov al, 'O'
+mov al, 'u'
 int 0x10
-mov al, 'S'
+mov al, 's'
 int 0x10
 mov al, ']'
 int 0x10
