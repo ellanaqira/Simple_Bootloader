@@ -3,9 +3,9 @@
 ;
 mov ah, 0x0e
 
-mov al, ' '
+mov al, 0xc9
 int 0x10
-mov al, '['
+mov al, '<'
 int 0x10
 mov al, 'N'
 int 0x10
@@ -23,7 +23,9 @@ mov al, 'u'
 int 0x10
 mov al, 's'
 int 0x10
-mov al, ']'
+mov al, '>'
+int 0x10
+mov al, 0xbb
 int 0x10
 
 jmp $
