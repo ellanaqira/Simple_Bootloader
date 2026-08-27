@@ -1,34 +1,35 @@
 ;
 ; A simple boot sector program that loops forever.
 ;
-mov ah, 0x0e
+[org 0x7c00]
 
-mov al, 0xc9
-int 0x10
-mov al, '<'
-int 0x10
-mov al, 'N'
-int 0x10
-mov al, 'a'
-int 0x10
-mov al, 'u'
-int 0x10
-mov al, 't'
-int 0x10
-mov al, 'i'
-int 0x10
-mov al, 'l'
-int 0x10
-mov al, 'u'
-int 0x10
-mov al, 's'
-int 0x10
-mov al, '>'
-int 0x10
-mov al, 0xbb
-int 0x10
+    mov bx, str1    ; store the adress of str1 into bx
+    call print_str  ; call print_str function
 
-jmp $
+jmp $    ; jump to the current memory address (infnite loop)
+
+
+print_str:
+    mov ah, 0x0e    ; scrolling teletype BIOS routine
+
+
+.next_char:
+    mov al, [bx]    ; get the character stored in bx
+    cmp al, 0       ; check if it is the zero terminator
+    je .done        ; if its zero, end the routine/function
+
+    int 0x10        ; call BIOS video interupt to print char
+    add bx, 1       ; move to the next char in memory
+    jmp .next_char  ; Repeat the loop
+
+
+.done:
+    ret     ; (return) end the subroutine/function
+
+
+str1:                   ; holding the string
+    db "Nautilus", 0    ; ends with null terminating
+
 
 times 510-($-$$) db 0   ; When compiled, our program must fit into 512 bytes, with
                         ; the last two bytes being the magic number, so here, tell
