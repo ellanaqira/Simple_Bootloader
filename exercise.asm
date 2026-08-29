@@ -29,8 +29,7 @@ int 0x10
 jmp $
 
 
-str1:
-    db "listen"
+str1: db "listen"
 
 times 510-($-$$) db 0
 
