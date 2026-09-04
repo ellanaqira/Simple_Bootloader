@@ -1,3 +1,6 @@
+; Simple assembly code to demonstrate storing characters
+; onto the stack by iterating through each character.
+
 [bits 16]
 [org 0x7c00]
 
