@@ -4,8 +4,20 @@
 [bits 16]
 [org 0x7c00]
 
-    mov bx, str1    ; store the adress of str1 into bx
+    mov bx, top_line    ; store the adress of str1 into bx
     call print_str  ; call print_str function
+
+    call print_newline
+
+    mov bx, str1
+    call print_str
+
+    call print_newline
+
+    mov bx, bottom_line
+    call print_str
+
+    call print_newline
 
 jmp $    ; jump to the current memory address (infnite loop)
 
@@ -24,12 +36,38 @@ next_char:
     jmp next_char   ; Repeat the loop
 
 
+print_newline:
+    mov ah, 0x0e    ; scrolling teletype BIOS routine
+
+    mov al, 0x0d    ; return to the first line - 0x0d = 13 which is Carriage Return (/r) 
+    int 0x10        ; call BIOS video interupt to print char
+
+    mov al, 0x0a    ; get the the newline character - 0x0a = 10
+    int 0x10        ; call BIOS video interupt to print char
+    ret
+
+
 done:
     ret     ; (return) end the subroutine/function
 
 
-str1:                   ; holding the string
-    db "Nautilus", 0    ; ends with null terminating
+
+; Data
+top_line:
+    db 0xc9, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd
+    db 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd
+    db 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xbb, 0      ; ends with null terminating
+
+str1:
+    db 0xba                          
+    db " Welcome to Nautilus "  
+    db 0xba, 0  ; ends with null terminating
+
+bottom_line:
+    db 0xc8, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd
+    db 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd
+    db 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xbc, 0      ; ends with null terminating
+    
 
 
 times 510-($-$$) db 0   ; When compiled, our program must fit into 512 bytes, with
