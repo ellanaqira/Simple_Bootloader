@@ -11,9 +11,9 @@
 
 mov ah, 0x0e ; scrolling teletype BIOS routine
 
-; ; 1st method
-; mov al, [the_secret] 
-; int 0x10
+; 1st method
+mov al, [the_secret] 
+int 0x10
 
 ; 2nd method
 mov bx, 0x7c0
@@ -22,16 +22,16 @@ mov ds, bx              ; ds (Data Register), 16-bit register to point to the me
 mov al, [the_secret]
 int 0x10
 
-; ; 3rd method
-; mov al, [es:the_secret]
-; int 0x10
+; 3rd method
+mov al, [es:the_secret]
+int 0x10
 
-; ; 4th method
-; mov bx, 0x7c0
-; mov es, bx              ; es (Extra Segment), 16-bit register used to point to an
-;                         ; additional chunk of memory for data access
-; mov al, [es:the_secret] 
-; int 0x10
+; 4th method
+mov bx, 0x7c0
+mov es, bx              ; es (Extra Segment), 16-bit register used to point to an
+                        ; additional chunk of memory for data access
+mov al, [es:the_secret] 
+int 0x10
 
 
 jmp $

@@ -1,6 +1,9 @@
 ;
 ; A simple boot sector program that loops forever.
 ;
+
+; // Turn Your Function Into Local Function
+
 [bits 16]
 [org 0x7c00]
 
