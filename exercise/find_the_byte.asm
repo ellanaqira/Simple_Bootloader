@@ -1,6 +1,7 @@
 ;
 ; A simple boot sector that domenstrates addressing
 ;
+
 mov ah, 0x0e    ; scrolling teletype BIOS routine
 
 ; 1st attempt
@@ -8,14 +9,14 @@ mov al, message
 int 0x10                ; Does this print out the output?
 
 ; 2nd attempt
-mov al, [message]
+mov al, [message]       ; get the value from address that stored inside message
 int 0x10                ; Does this print out the output?
 
 ; 3rd attempt
-mov bx, message ; bx = offset of the message (30 bytes/0x1e)
-add bx, 0x7c00  ; bx = 0x7c00 + 0x1e = 0x7c1e (Physical address)
-mov al, [bx]    ; access the content of bx, [bx] means
-                ; store the contents of an address
+mov bx, message         ; bx = offset of the message (30 bytes/0x1e)
+add bx, 0x7c00          ; bx = 0x7c00 + 0x1e = 0x7c1e (Physical address)
+mov al, [bx]            ; access the content of bx, [bx] means
+                        ; store the contents of an address
 int 0x10                ; Does this print out the output?
 
 ; 4th attempt
