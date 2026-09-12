@@ -1,9 +1,9 @@
 # Simple_Bootloader
-In this repository i learn how to write my own bootloader based from book ["Writing Operating System From Scratch"](book/Writing%20a%20Simple%20Operating%20System%20from%20Scratch%20-%20Nick%20Blundell%20-%20Dec%202010.pdf) by Nick Blundell
+In this repository i learn how to write my own bootloader based from book ["Writing a Simple Operating System From Scratch"](book/Writing%20a%20Simple%20Operating%20System%20from%20Scratch%20-%20Nick%20Blundell%20-%20Dec%202010.pdf) by Nick Blundell
 
 
 ## Reference
-1. ["Writing Operating System From Scratch"](book/Writing%20a%20Simple%20Operating%20System%20from%20Scratch%20-%20Nick%20Blundell%20-%20Dec%202010.pdf) by Nick Blundell
+1. ["Writing a Simple Operating System From Scratch"](book/Writing%20a%20Simple%20Operating%20System%20from%20Scratch%20-%20Nick%20Blundell%20-%20Dec%202010.pdf) by Nick Blundell
 2. ["The C Programming Language - 2nd Edition"](book/C%20Programming%20Language%20-%202nd%20Edition.pdf) by Brian Kernighan and Dennis Ritchie
 
 ## Preview
