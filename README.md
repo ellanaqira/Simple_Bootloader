@@ -8,7 +8,7 @@ In this repository i learn how to write my own bootloader based from book ["Writ
 
 ## Preview
 Bootloader Preview:
-![Bootloader Preview](readme_asets/shoebill_bootloader.png)
+![Bootloader Preview](readme_asets/image.png)
 
 ## Things you need before run
 1. NASM (Netwide Assembler)
