@@ -2,60 +2,31 @@
 ; A simple boot sector program that loops forever.
 ;
 
-
-
 [bits 16]
 [org 0x7c00]
 
-    call print_newline
+    call print_newline              ; call print_newline function from print_newline.asm
 
-    mov bx, Shoebill_ascii
-    call print_str
+    mov bx, Nautilus_ascii_art
+    call print_str                  ; call print_str function from print_str.asm
 
 jmp $    ; jump to the current memory address (infnite loop)
 
 
-print_str:
-    mov ah, 0x0e    ; scrolling teletype BIOS routine
-
-
-next_char:
-    mov al, [bx]    ; get the character stored in bx
-    cmp al, 0       ; check if it is the zero terminator
-    je done         ; if its zero, end the routine/function
-
-    int 0x10        ; call BIOS video interupt to print char
-    add bx, 1       ; move to the next char in memory
-    jmp next_char   ; Repeat the loop
-
-
-print_newline:
-    mov ah, 0x0e    ; scrolling teletype BIOS routine
-
-    mov al, 0x0d    ; return to the first line - 0x0d = 13 which is Carriage Return (/r) 
-    int 0x10        ; call BIOS video interupt to print char
-
-    mov al, 0x0a    ; get the the newline character - 0x0a = 10
-    int 0x10        ; call BIOS video interupt to print char
-    ret
-
-
-done:
-    ret     ; (return) end the subroutine/function
-
+; import file that contains function
+%include "print_str.asm"
+%include "print_newline.asm"
 
 
 ; Data
-Shoebill_ascii:
-    ; db 0x20, 0x20, 0xc9, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xbb, 0x0d, 0x0a
-    db "     ___          ", 0x0d, 0x0a
+Nautilus_ascii_art:
+    db "     ___           ", 0x0d, 0x0a
     db "   /' _ `\         ", 0x0d, 0x0a
     db "  | ,' `, |~-.,    ", 0x0d, 0x0a
     db "  | | `-' |0=-;_-' ", 0x0d, 0x0a
     db "   \ `--'`\<=-_.-. ", 0x0d, 0x0a
     db "    `~---~'`-.-.   ", 0x0d, 0x0a
     db "                   ", 0x0d, 0x0a
-    ; db 0x20, 0x20, 0xc8, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xcd, 0xbc, 0x0d, 0x0a
     db 0
 
 
