@@ -1,4 +1,4 @@
-; Write a simple Bootsector code that prints a 'Hello World!'' message
+; Write a simple Bootsector code that prints a 'Hello World!' message
 
 [bits 16]
 [org 0x7c00]
